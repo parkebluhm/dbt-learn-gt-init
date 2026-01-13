@@ -7,3 +7,14 @@ sources:
     tables:
       - name: customers
       - name: orders
+        identifier: new_orders
+        config:
+          freshness:
+            warn_after:
+              count: 24
+              period: hour
+            error_after:
+              count: 48
+              period: hour
+          loaded_at_field: _ingested_at
+

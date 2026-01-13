@@ -4,6 +4,6 @@
         PAYMENTMETHOD as payment_mathod, 
         status, 
         amount / 100 as amount,
-        created
+        _ingested_at
 
     from {{source('stripe','payments')}}
