@@ -2,12 +2,24 @@ version: 2
 
 sources:
   - name: jaffle_shop
+    description: clone of a postgres db
     database: raw
     schema: jaffle_shop
     tables:
       - name: customers
+        description: raw cust data
+        columns:
+          - name: id
+            description: primary key
+            data_tests:
+              - unique
+              - not_null      
       - name: orders
+        description: raw orders data
         identifier: new_orders
+        columns: 
+          - name: order_id
+            description: primary key
         config:
           freshness:
             warn_after: {count: 24, period: hour}

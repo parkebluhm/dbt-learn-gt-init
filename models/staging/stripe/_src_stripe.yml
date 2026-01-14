@@ -6,10 +6,16 @@ sources:
     schema: stripe
     tables:
       - name: payments
+        description: payments data from stripe
         identifier: new_payments
+        columns:
+          - name: payment_id
+            description: primary key 
+          - name: amount
+            description: raw data comes in cents and needs to be devided by 100 to displayed in dollars
         config:
           freshness:
             warn_after: {count: 24, period: hour}
-            error_after: {count: 48, period: hour}
+            error_after: {count: 24, period: hour}
           loaded_at_field: _ingested_at    
 
